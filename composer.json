@@ -18,7 +18,8 @@
         "pxlrbt/filament-environment-indicator": "^2.2",
         "spatie/laravel-activitylog": "^4.10",
         "spatie/laravel-permission": "^6.21",
-        "swisnl/filament-backgrounds": "^1.1"
+        "swisnl/filament-backgrounds": "^1.1",
+        "tapp/filament-country-code-field": "^1.0"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",
