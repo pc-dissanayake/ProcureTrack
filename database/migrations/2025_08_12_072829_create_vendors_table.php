@@ -24,6 +24,7 @@ return new class extends Migration
             $table->string('city')->nullable();
             $table->string('country')->nullable();
             $table->text('notes')->nullable();
+            $table->json('tags')->nullable();
             $table->timestamps();
         });
     }
