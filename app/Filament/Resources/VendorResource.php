@@ -27,21 +27,26 @@ class VendorResource extends Resource
                     ->required()
                     ->maxLength(255),
                 Forms\Components\TextInput::make('address')->maxLength(255),
-                Forms\Components\TextInput::make('city')->maxLength(255),
-                Forms\Components\TextInput::make('country')->maxLength(255),
+                Forms\Components\Select::make('country')
+                    ->options([
+                        'Sri Lanka' => 'Sri Lanka',
+                        // Add more countries as needed
+                    ])
+                    ->required()
+                    ->live(),
+                Forms\Components\Select::make('city')
+                    ->label('City')
+                    ->searchable()
+                    ->options(function ($get) {
+                        if ($get('country') === 'Sri Lanka') {
+                            return \App\Models\LKCity::orderBy('name_en')->pluck('name_en', 'name_en');
+                        }
+                        return [];
+                    })
+                    ->requiredIf('country', 'Sri Lanka'),
                 Forms\Components\Textarea::make('notes'),
                 Forms\Components\Tabs::make('Vendor Details')
                     ->tabs([
-                        Forms\Components\Tabs\Tab::make('General')
-                            ->schema([
-                                Forms\Components\TextInput::make('name')
-                                    ->required()
-                                    ->maxLength(255),
-                                Forms\Components\Textarea::make('address'),
-                                Forms\Components\TextInput::make('city')->maxLength(255),
-                                Forms\Components\TextInput::make('country')->maxLength(255),
-                                Forms\Components\Textarea::make('notes'),
-                            ]),
                         Forms\Components\Tabs\Tab::make('Contacts')
                             ->schema([
                                 Forms\Components\Repeater::make('contacts')
