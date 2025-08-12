@@ -61,7 +61,7 @@ class VendorResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('name')->searchable()->sortable(),
                 Tables\Columns\TextColumn::make('city'),
-                Tables\Columns::TextColumn::make('country'),
+                Tables\Columns\TextColumn::make('country'),
             ])
             ->filters([
                 // Add filters if needed
