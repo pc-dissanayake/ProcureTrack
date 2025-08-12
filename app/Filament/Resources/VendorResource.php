@@ -45,6 +45,8 @@ class VendorResource extends Resource
                     })
                     ->requiredIf('country', stateValues: 'Sri Lanka'),
                 Forms\Components\Textarea::make('notes'),
+
+                
                 Forms\Components\Tabs::make('Vendor Details')
                     ->tabs([
                         Forms\Components\Tabs\Tab::make('Contacts')
