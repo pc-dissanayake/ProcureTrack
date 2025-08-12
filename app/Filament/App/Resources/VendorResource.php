@@ -1,3 +1,11 @@
+    public static function getPages(): array
+    {
+        return [
+            'index' => Pages\ListVendors::route('/'),
+            'create' => Pages\CreateVendor::route('/create'),
+            'edit' => Pages\EditVendor::route('/{record}/edit'),
+        ];
+    }
 <?php
 
 namespace App\Filament\App\Resources;
