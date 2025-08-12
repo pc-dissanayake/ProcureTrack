@@ -17,7 +17,7 @@ class ProcurementStageResource extends Resource
 {
     protected static ?string $model = ProcurementStage::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'fas-stairs';
 
     public static function form(Form $form): Form
     {
