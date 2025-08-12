@@ -24,9 +24,9 @@ class ProcurementStageResource extends Resource
         return $form
             ->schema([
                 Forms\Components\TextInput::make('name')
-                    ->required()
+                    ->required()->columnSpanFull()
                     ->maxLength(255),
-                Forms\Components\Textarea::make('description'),
+                Forms\Components\Textarea::make('description')->columnSpanFull(),
                 Forms\Components\Toggle::make('is_active')
                     ->label('Active')
                     ->default(true),
