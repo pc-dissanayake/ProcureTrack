@@ -13,12 +13,13 @@ return new class extends Migration
     {
         Schema::create('procurements', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('vendor_id')->constrained('vendors')->onDelete('cascade');
             $table->string('title');
             $table->text('description')->nullable();
             $table->string('requested_by');
             $table->date('requested_at');
             $table->string('status')->default('pending');
-            $table->decimal(column: 'amount', total: 15, places: 2)->nullable();
+            $table->decimal('amount', 15, 2)->nullable();
             $table->text('remarks')->nullable();
             $table->timestamps();
         });
