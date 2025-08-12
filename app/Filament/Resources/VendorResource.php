@@ -26,7 +26,7 @@ class VendorResource extends Resource
                 Forms\Components\TextInput::make('name')
                     ->required()
                     ->maxLength(255),
-                Forms\Components\TextInput::make('address')->maxLength(255),
+                Forms\Components\Textarea::make('address'),
                 Forms\Components\Select::make('country')
                     ->options([
                         'Sri Lanka' => 'Sri Lanka',
