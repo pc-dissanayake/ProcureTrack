@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('requested_by');
             $table->date('requested_at');
             $table->string('status')->default('pending');
-            $table->decimal('amount', 15, 2)->nullable();
+            $table->decimal(column: 'amount', 35, 2)->nullable();
             $table->string('vendor')->nullable();
             $table->date('approved_at')->nullable();
             $table->string('approved_by')->nullable();
