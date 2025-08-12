@@ -26,38 +26,54 @@ class VendorResource extends Resource
                 Forms\Components\TextInput::make('name')
                     ->required()
                     ->maxLength(255),
-                Forms\Components\Repeater::make('contacts')
-                    ->label('Contact Persons')
-                    ->schema([
-                        Forms\Components\TextInput::make('name')
-                            ->label('Contact Name')
-                            ->required(),
-                        Forms\Components\TextInput::make('position')
-                            ->label('Position'),
-                        Forms\Components\Repeater::make('emails')
-                            ->label('Emails')
-                            ->schema([
-                                Forms\Components\TextInput::make('email')
-                                    ->email()
-                                    ->maxLength(255),
-                            ])
-                            ->default([])
-                            ->nullable(),
-                        Forms\Components\Repeater::make('phones')
-                            ->label('Phones')
-                            ->schema([
-                                Forms\Components\TextInput::make('phone')
-                                    ->maxLength(50),
-                            ])
-                            ->default([])
-                            ->nullable(),
-                    ])
-                    ->default([])
-                    ->nullable(),
                 Forms\Components\TextInput::make('address')->maxLength(255),
                 Forms\Components\TextInput::make('city')->maxLength(255),
                 Forms\Components\TextInput::make('country')->maxLength(255),
                 Forms\Components\Textarea::make('notes'),
+                Forms\Components\Tabs::make('Vendor Details')
+                    ->tabs([
+                        Forms\Components\Tabs\Tab::make('General')
+                            ->schema([
+                                Forms\Components\TextInput::make('name')
+                                    ->required()
+                                    ->maxLength(255),
+                                Forms\Components\Textarea::make('address'),
+                                Forms\Components\TextInput::make('city')->maxLength(255),
+                                Forms\Components\TextInput::make('country')->maxLength(255),
+                                Forms\Components\Textarea::make('notes'),
+                            ]),
+                        Forms\Components\Tabs\Tab::make('Contacts')
+                            ->schema([
+                                Forms\Components\Repeater::make('contacts')
+                                    ->label('Contact Persons')
+                                    ->schema([
+                                        Forms\Components\TextInput::make('name')
+                                            ->label('Contact Name')
+                                            ->required(),
+                                        Forms\Components\TextInput::make('position')
+                                            ->label('Position'),
+                                        Forms\Components\Repeater::make('emails')
+                                            ->label('Emails')
+                                            ->schema([
+                                                Forms\Components\TextInput::make('email')
+                                                    ->email()
+                                                    ->maxLength(255),
+                                            ])
+                                            ->default([])
+                                            ->nullable(),
+                                        Forms\Components\Repeater::make('phones')
+                                            ->label('Phones')
+                                            ->schema([
+                                                Forms\Components\TextInput::make('phone')
+                                                    ->maxLength(50),
+                                            ])
+                                            ->default([])
+                                            ->nullable(),
+                                    ])
+                                    ->default([])
+                                    ->nullable(),
+                            ]),
+                    ]),
             ]);
     }
 
