@@ -17,12 +17,14 @@ class Vendor extends Model
         'city',
         'country',
         'notes',
+        'tags',
     ];
 
     protected $casts = [
         'company_email' => 'array',
         'company_phone' => 'array',
         'contacts' => 'array',
+        'tags' => 'array',
     ];
 
     public function procurements()
