@@ -28,10 +28,10 @@ class VendorResource extends Resource
                     ->maxLength(255),
                 Forms\Components\Textarea::make('address')->rows(3)->columnSpanFull(),
                 Forms\Components\Select::make('country')
-                    ->options([
-                        'Sri Lanka' => 'Sri Lanka',
-                        // Add more countries as needed
-                    ])
+                    ->label('Country')
+                    ->searchable()
+                    ->options(\App\Models\Country::orderBy('name')->pluck('name', 'name')->toArray())
+                    ->default('Sri Lanka')
                     ->required()
                     ->live(),
                 Forms\Components\Select::make('city')
