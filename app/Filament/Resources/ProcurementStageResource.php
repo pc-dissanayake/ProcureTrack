@@ -27,9 +27,6 @@ class ProcurementStageResource extends Resource
                     ->required()
                     ->maxLength(255),
                 Forms\Components\Textarea::make('description'),
-                Forms\Components\TextInput::make('order')
-                    ->numeric()
-                    ->default(0),
                 Forms\Components\Toggle::make('is_active')
                     ->label('Active')
                     ->default(true),
