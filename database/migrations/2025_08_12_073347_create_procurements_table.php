@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('requested_by');
             $table->date('requested_at');
             $table->string('status')->default('pending');
-            $table->decimal(column: 'amount', total: 1, places: 2)->nullable();
+            $table->decimal(column: 'amount', total: 15, places: 2)->nullable();
             $table->text('remarks')->nullable();
             $table->timestamps();
         });
