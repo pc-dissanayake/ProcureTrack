@@ -68,6 +68,9 @@ class VendorResource extends Resource
                     })
                     ->requiredIf('country', stateValues: 'Sri Lanka'),
                 Forms\Components\Textarea::make('notes'),
+                Forms\Components\TagsInput::make('tags')
+                    ->label('Tags')
+                    ->separator(','),
 
 
                 Forms\Components\Tabs::make('Vendor Details')

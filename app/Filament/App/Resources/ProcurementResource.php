@@ -44,8 +44,6 @@ class ProcurementResource extends Resource
                 Forms\Components\TextInput::make('amount')
                     ->numeric()
                     ->prefix('Rs'),
-                Forms\Components\TextInput::make('vendor')
-                    ->maxLength(255),
                 Forms\Components\DatePicker::make('approved_at'),
                 Forms\Components\TextInput::make('approved_by')
                     ->maxLength(255),
@@ -59,6 +57,9 @@ class ProcurementResource extends Resource
                         'failed' => 'Failed',
                     ]),
                 Forms\Components\Textarea::make('remarks'),
+                Forms\Components\TagsInput::make('tags')
+                    ->label('Tags')
+                    ->separator(','),
             ]);
     }
 
