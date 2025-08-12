@@ -18,13 +18,7 @@ return new class extends Migration
             $table->string('requested_by');
             $table->date('requested_at');
             $table->string('status')->default('pending');
-            $table->decimal(column: 'amount', 35, 2)->nullable();
-            $table->string('vendor')->nullable();
-            $table->date('approved_at')->nullable();
-            $table->string('approved_by')->nullable();
-            $table->date('ordered_at')->nullable();
-            $table->date('delivered_at')->nullable();
-            $table->string('delivery_status')->nullable();
+            $table->decimal(column: 'amount', total: 35, 2)->nullable();
             $table->text('remarks')->nullable();
             $table->timestamps();
         });
