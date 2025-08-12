@@ -27,9 +27,12 @@ class ProcurementResource extends Resource
                     ->required()
                     ->maxLength(255),
                 Forms\Components\Textarea::make('description'),
-                Forms\Components\TextInput::make('requested_by')
+                Forms\Components\Select::make('requested_by')
+                    ->label('Requested By')
+                    ->options(fn () => \App\Models\User::pluck('name', 'id'))
+                    ->default(auth()->id())
                     ->required()
-                    ->maxLength(255),
+                    ->searchable(),
                 Forms\Components\DatePicker::make('requested_at')
                     ->required(),
                 Forms\Components\Select::make('status')
