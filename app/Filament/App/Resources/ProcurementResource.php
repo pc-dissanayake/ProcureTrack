@@ -23,7 +23,42 @@ class ProcurementResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Forms\Components\TextInput::make('title')
+                    ->required()
+                    ->maxLength(255),
+                Forms\Components\Textarea::make('description'),
+                Forms\Components\TextInput::make('requested_by')
+                    ->required()
+                    ->maxLength(255),
+                Forms\Components\DatePicker::make('requested_at')
+                    ->required(),
+                Forms\Components\Select::make('status')
+                    ->options([
+                        'pending' => 'Pending',
+                        'approved' => 'Approved',
+                        'ordered' => 'Ordered',
+                        'delivered' => 'Delivered',
+                        'cancelled' => 'Cancelled',
+                    ])
+                    ->required(),
+                Forms\Components\TextInput::make('amount')
+                    ->numeric()
+                    ->prefix('Rs'),
+                Forms\Components\TextInput::make('vendor')
+                    ->maxLength(255),
+                Forms\Components\DatePicker::make('approved_at'),
+                Forms\Components\TextInput::make('approved_by')
+                    ->maxLength(255),
+                Forms\Components\DatePicker::make('ordered_at'),
+                Forms\Components\DatePicker::make('delivered_at'),
+                Forms\Components\Select::make('delivery_status')
+                    ->options([
+                        'pending' => 'Pending',
+                        'in_transit' => 'In Transit',
+                        'delivered' => 'Delivered',
+                        'failed' => 'Failed',
+                    ]),
+                Forms\Components\Textarea::make('remarks'),
             ]);
     }
 
@@ -31,10 +66,28 @@ class ProcurementResource extends Resource
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\TextColumn::make('title')->searchable()->sortable(),
+                Tables\Columns\TextColumn::make('requested_by')->sortable(),
+                Tables\Columns\TextColumn::make('requested_at')->date()->sortable(),
+                Tables\Columns\TextColumn::make('status')->badge()->sortable(),
+                Tables\Columns\TextColumn::make('amount')->money('LKR', true),
+                Tables\Columns\TextColumn::make('vendor'),
+                Tables\Columns\TextColumn::make('approved_by'),
+                Tables\Columns\TextColumn::make('ordered_at')->date(),
+                Tables\Columns\TextColumn::make('delivered_at')->date(),
+                Tables\Columns\TextColumn::make('delivery_status')->badge(),
+                Tables\Columns\TextColumn::make('remarks')->limit(20),
+                Tables\Columns\TextColumn::make('created_at')->dateTime()->sortable(),
             ])
             ->filters([
-                //
+                Tables\Filters\SelectFilter::make('status')
+                    ->options([
+                        'pending' => 'Pending',
+                        'approved' => 'Approved',
+                        'ordered' => 'Ordered',
+                        'delivered' => 'Delivered',
+                        'cancelled' => 'Cancelled',
+                    ]),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
