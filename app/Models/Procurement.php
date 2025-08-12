@@ -7,13 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 class Procurement extends Model
 {
     protected $fillable = [
+        'vendor_id',
         'title',
         'description',
         'requested_by',
         'requested_at',
         'status',
         'amount',
-        'vendor',
         'approved_at',
         'approved_by',
         'ordered_at',
@@ -21,4 +21,9 @@ class Procurement extends Model
         'delivery_status',
         'remarks',
     ];
+
+    public function vendor()
+    {
+        return $this->belongsTo(Vendor::class);
+    }
 }

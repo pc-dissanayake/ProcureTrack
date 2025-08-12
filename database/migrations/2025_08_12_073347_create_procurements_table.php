@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('vendor_id')->constrained('vendors')->onDelete('cascade');
             $table->string('title');
-            $table->text('description')->nullable();
+            $table->string('type');            $table->text('description')->nullable();
             $table->string('requested_by');
             $table->date('requested_at');
             $table->string('status')->default('pending');
