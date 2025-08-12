@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('contact_person')->nullable();
-            $table->string('email')->nullable();
-            $table->string('phone')->nullable();
+            $table->json('email')->nullable();
+            $table->json('phone')->nullable();
             $table->string('address')->nullable();
             $table->string('city')->nullable();
             $table->string('country')->nullable();
