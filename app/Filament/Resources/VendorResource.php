@@ -43,7 +43,7 @@ class VendorResource extends Resource
                         }
                         return [];
                     })
-                    ->requiredIf('country', 'Sri Lanka'),
+                    ->requiredIf('country', stateValues: 'Sri Lanka'),
                 Forms\Components\Textarea::make('notes'),
                 Forms\Components\Tabs::make('Vendor Details')
                     ->tabs([
