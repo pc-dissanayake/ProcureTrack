@@ -14,6 +14,10 @@ return new class extends Migration
         Schema::create('vendors', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('logo')->nullable();
+            $table->string('website')->nullable();
+            $table->json('company_email')->nullable();
+            $table->json('company_phone')->nullable();
             // Store an array of contact persons, each with name, position, phones, emails
             $table->json('contacts')->nullable();
             $table->string('address')->nullable();
