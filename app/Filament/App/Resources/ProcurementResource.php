@@ -35,7 +35,8 @@ class ProcurementResource extends Resource
                     ->required()
                     ->searchable(),
                 Forms\Components\DatePicker::make('requested_at')
-                    ->required(),
+                    ->required()
+                    ->default(now()),
                 Forms\Components\Select::make('status')
                     ->options([
                         'pending' => 'Pending',
