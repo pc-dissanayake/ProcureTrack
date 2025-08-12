@@ -13,6 +13,8 @@ class VendorResource extends Resource
 {
     protected static ?string $model = Vendor::class;
 
+    protected static ?string $navigationIcon = "fas-money-bill-1";
+
     public static function form(Form $form): Form
     {
         return $form
