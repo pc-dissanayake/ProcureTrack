@@ -20,6 +20,11 @@ class Procurement extends Model
         'delivered_at',
         'delivery_status',
         'remarks',
+        'tags',
+    ];
+
+    protected $casts = [
+        'tags' => 'array',
     ];
 
     public function vendor()
