@@ -24,9 +24,10 @@ class ProcurementResource extends Resource
         return $form
             ->schema([
                 Forms\Components\TextInput::make('title')
-                    ->required()
+                    ->required()->columnSpanFull()
                     ->maxLength(255),
-                Forms\Components\Textarea::make('description'),
+                Forms\Components\Textarea::make('description')
+                ->columnSpanFull(),
                 Forms\Components\Select::make('requested_by')
                     ->label('Requested By')
                     ->options(fn () => \App\Models\User::pluck('name', 'id'))
