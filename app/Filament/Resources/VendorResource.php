@@ -26,6 +26,29 @@ class VendorResource extends Resource
                 Forms\Components\TextInput::make('name')
                     ->required()->columnSpanFull()
                     ->maxLength(255),
+                Forms\Components\TextInput::make('logo')
+                    ->label('Logo URL/Path')
+                    ->maxLength(255),
+                Forms\Components\TextInput::make('website')
+                    ->label('Website')
+                    ->maxLength(255),
+                Forms\Components\Repeater::make('company_email')
+                    ->label('Company Emails')
+                    ->schema([
+                        Forms\Components\TextInput::make('email')
+                            ->email()
+                            ->maxLength(255),
+                    ])
+                    ->default([])
+                    ->nullable(),
+                Forms\Components\Repeater::make('company_phone')
+                    ->label('Company Phones')
+                    ->schema([
+                        Forms\Components\TextInput::make('phone')
+                            ->maxLength(50),
+                    ])
+                    ->default([])
+                    ->nullable(),
                 Forms\Components\Textarea::make('address')->rows(3)->columnSpanFull(),
                 Forms\Components\Select::make('country')
                     ->label('Country')
@@ -46,7 +69,7 @@ class VendorResource extends Resource
                     ->requiredIf('country', stateValues: 'Sri Lanka'),
                 Forms\Components\Textarea::make('notes'),
 
-                
+
                 Forms\Components\Tabs::make('Vendor Details')
                     ->tabs([
                         Forms\Components\Tabs\Tab::make('Contacts')
